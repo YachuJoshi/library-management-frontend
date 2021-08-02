@@ -1,3 +1,15 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "extends": ["eslint:recommended","airbnb","next", "plugin:prettier/recommended", "next/core-web-vitals"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "object-shorthand": "off",
+    "no-unused-vars": "warn",
+    "no-process-exit": "off",
+    "no-console": "off",
+    "func-names": "off",
+    "import/named": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-unresolved": "off"
+  }
 }
