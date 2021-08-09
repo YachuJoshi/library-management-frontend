@@ -1,10 +1,11 @@
 import "../styles/globals.scss";
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "../src/context";
 import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <AuthProvider>
       <Component {...pageProps} />
       <ToastContainer
         position="top-center"
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         draggable
         pauseOnHover
       />
-    </>
+    </AuthProvider>
   );
 }
 

@@ -6,7 +6,7 @@ import styles from "./PasswordField.module.scss";
 
 export const PasswordField = ({ password, setPassword }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const EyeIcon = isVisible ? AiOutlineEyeInvisible : AiOutlineEye;
+  const EyeIcon = !isVisible ? AiOutlineEyeInvisible : AiOutlineEye;
 
   return (
     <span className={styles.Password}>

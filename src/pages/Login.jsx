@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/label-has-associated-control */
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { toast, Button } from "../components";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
-import { api } from "../api";
+import { useRouter } from "next/router";
+import { Button } from "../components";
+import { useAuth } from "../context";
 
 import { MainLayout } from "../layout";
 import { InputField, PasswordField } from "../login";
@@ -15,23 +13,27 @@ import styles from "./Login.module.scss";
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const { user, login } = useAuth();
+  const router = useRouter();
 
-  const notify = useCallback((type, message) => {
-    toast({ type, message });
-  }, []);
+  if (user.isLoggedIn) {
+    router.push("/");
+  }
+
+  useEffect(() => {
+    router.prefetch("/");
+  }, [router]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/login", {
-        username: userName,
-        password,
-      });
-      notify("success", "Welcome!");
-      console.log(response);
+      const loginSuccess = await login(userName, password);
+      if (loginSuccess) {
+        router.push("/");
+      }
     } catch (err) {
-      notify("error", "Invalid Username / Password");
+      console.log(err);
     }
   };
 
