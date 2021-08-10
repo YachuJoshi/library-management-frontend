@@ -25,7 +25,6 @@ export const Login = () => {
 
     try {
       const loginSuccess = await login(userName, password);
-      console.log(loginSuccess);
       if (loginSuccess) {
         router.push("/");
       }

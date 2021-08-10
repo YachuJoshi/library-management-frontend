@@ -10,6 +10,7 @@
     "func-names": "off",
     "import/named": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

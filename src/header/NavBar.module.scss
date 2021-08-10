@@ -1,0 +1,109 @@
+@import '../../styles/main.scss';
+
+.NavigationBar {
+  background: $color-primary;
+  color: $color-white;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+
+  @include media-breakpoint-up(md) {
+    padding: 28px 20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 24px 20px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding: 20px 0;
+  }
+
+  .Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.Logo {
+  position: relative;
+  z-index: 20;
+  font-family: 'Sora', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  user-select: none;
+  font-size: 18px;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 18px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 19px;
+  }
+}
+
+.NavListDesktop {
+  display: none;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.NavItem {
+  position: relative;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 18px;
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+
+    @include media-breakpoint-up(lg) {
+      margin-right: 36px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin-right: 58px;
+    }
+  }
+
+  &:hover {
+    background-color: #329785;
+    // color: $white-200;
+
+    .HoverList {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0px) scale(1);
+    }
+  }
+}
+
+.NavMenuButton {
+  position: relative;
+  z-index: 20;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+
+  .Menu {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+  }
+}

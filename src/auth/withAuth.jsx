@@ -19,7 +19,6 @@ export const withAuth = (Component) => {
         return null;
       }
 
-      console.log("LOGGED IN");
       return <Component {...props} />;
     }
     return null;
