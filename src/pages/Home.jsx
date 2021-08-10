@@ -1,18 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { withAuth } from "../auth";
+import { useAuthContext } from "../context";
 import { MainLayout } from "../layout";
-import { Container } from "../components";
-import { fetchAllStudents } from "../services";
+import { Button, Container } from "../components";
 
-export const Home = () => {
-  useEffect(async () => {
-    const { data } = await fetchAllStudents();
-    console.log(data);
-  }, []);
+export const Home = withAuth(() => {
+  const router = useRouter();
+  const { user, logout } = useAuthContext();
+  console.log(user);
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <MainLayout title="Library Management | Home Page">
-      <Container>Hello World</Container>
+      <Container>
+        <div>Hello {user.userDetails.first_name}</div>
+        <Button onClick={handleLogout}>Logout</Button>
+      </Container>
     </MainLayout>
   );
-};
+});

@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/label-has-associated-control */
+/* eslint-disable no-undef, jsx-a11y/anchor-is-valid, jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "../components";
-import { useAuth } from "../context";
+import { useAuthContext } from "../context";
 
 import { MainLayout } from "../layout";
 import { InputField, PasswordField } from "../login";
@@ -13,12 +13,8 @@ import styles from "./Login.module.scss";
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { user, login } = useAuth();
+  const { login } = useAuthContext();
   const router = useRouter();
-
-  if (user.isLoggedIn) {
-    router.push("/");
-  }
 
   useEffect(() => {
     router.prefetch("/");
@@ -29,6 +25,7 @@ export const Login = () => {
 
     try {
       const loginSuccess = await login(userName, password);
+      console.log(loginSuccess);
       if (loginSuccess) {
         router.push("/");
       }
