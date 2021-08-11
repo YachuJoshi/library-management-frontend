@@ -9,5 +9,11 @@ export const fetchtStudentById = (id) => {
 };
 
 export const fetchStudentBookDetail = (id) => {
-  return api.get(`/students/${id}/books`);
+  const accessToken = localStorage.getItem("accessToken");
+  return api.get(`/students/${id}/books`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
 };

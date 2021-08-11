@@ -1,15 +1,15 @@
+/* eslint-disable react/button-has-type */
 import Link from "next/link";
-import Image from "next/image";
 import cx from "classnames";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { ImBooks } from "react-icons/im";
 import { BiDonateHeart } from "react-icons/bi";
-import { FiPhone } from "react-icons/fi";
+import { FiPhone, FiLogOut } from "react-icons/fi";
 
 import styles from "./MobileNav.module.scss";
 
-export const MobileNav = ({ isOpen }) => {
+export const MobileNav = ({ isOpen, handleLogout }) => {
   return (
     <div
       className={cx(styles.Overlay, {
@@ -22,7 +22,7 @@ export const MobileNav = ({ isOpen }) => {
             <span className={styles.Item}>
               <AiOutlineUser className={styles.ItemIcon} />
               <Link href="/profle">
-                <a>Profle</a>
+                <a>Profile</a>
               </Link>
             </span>
           </li>
@@ -48,6 +48,14 @@ export const MobileNav = ({ isOpen }) => {
               <Link href="#">
                 <a>Contact</a>
               </Link>
+            </span>
+          </li>
+          <li className={styles.NavMobileItem}>
+            <span className={styles.Item}>
+              <FiLogOut className={styles.ItemIcon} />
+              <button onClick={handleLogout} className={styles.LogoutBtn}>
+                Logout
+              </button>
             </span>
           </li>
         </ul>

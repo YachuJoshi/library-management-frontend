@@ -9,7 +9,8 @@
   width: 100%;
   transform: translateX(100%);
   transition: all 0.3s ease-in;
-  background: $color-primary;
+  background-color: #0093E9;
+  background-image: linear-gradient(120deg, #0093E9 0%, #80D0C7 100%);
 
   &.OverlayActive {
     transform: translateX(0);
@@ -60,4 +61,11 @@
   width: 24px;
   margin-right: 20px;
   margin-top: 4px;
+}
+
+.LogoutBtn {
+  font: inherit;
+  background: transparent;
+  border: none;
+  color: $color-white;
 }

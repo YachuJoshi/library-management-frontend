@@ -1,7 +1,8 @@
 @import '../../styles/main.scss';
 
 .NavigationBar {
-  background: $color-primary;
+  background-color: #0093E9;
+  background-image: linear-gradient(120deg, #0093E9 0%, $color-primary 100%);
   color: $color-white;
   padding: 20px;
   position: relative;
@@ -78,8 +79,7 @@
   }
 
   &:hover {
-    background-color: #329785;
-    // color: $white-200;
+    background-color: #238f96;
 
     .HoverList {
       visibility: visible;
@@ -87,6 +87,14 @@
       transform: translateX(0px) scale(1);
     }
   }
+}
+
+.LogoutBtn {
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: $color-white;
+  cursor: pointer;
 }
 
 .NavMenuButton {

@@ -1,17 +1,18 @@
-/* eslint-disable jsx-a11y/anchor-is-valid, no-undef */
+/* eslint-disable jsx-a11y/anchor-is-valid, no-undef, react/button-has-type */
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import cx from "classnames";
-
+import { useRouter } from "next/router";
 import { MobileNav } from "./MobileNav";
 import { Container } from "../components";
+import { useAuthContext } from "../context";
 
 import styles from "./NavBar.module.scss";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuthContext();
+  const router = useRouter();
   const icon = !isOpen ? "/icons/menu.svg" : "/icons/close-icon.svg";
 
   useEffect(() => {
@@ -23,6 +24,11 @@ export const NavBar = () => {
       document.querySelector("html").style.overflowY = "visible";
     }
   }, [isOpen]);
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <nav className={styles.NavigationBar}>
@@ -53,6 +59,11 @@ export const NavBar = () => {
               <a>Contact</a>
             </Link>
           </li>
+          <li className={styles.NavItem}>
+            <button onClick={handleLogout} className={styles.LogoutBtn}>
+              Logout
+            </button>
+          </li>
         </ul>
         <button
           type="button"
@@ -64,10 +75,10 @@ export const NavBar = () => {
             alt="Menu"
             height={19}
             width={19}
-            className={cx(styles.Menu)}
+            className={styles.Menu}
           />
         </button>
-        <MobileNav isOpen={isOpen} />
+        <MobileNav isOpen={isOpen} handleLogout={handleLogout} />
       </Container>
     </nav>
   );
