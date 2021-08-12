@@ -1,18 +1,26 @@
-import { AiOutlineUser } from "react-icons/ai";
 import styles from "./InputField.module.scss";
 
-export const InputField = ({ input, setInput }) => {
+export const InputField = ({
+  name,
+  type,
+  placeholder,
+  icon: Icon,
+  input,
+  setInput,
+  ...props
+}) => {
   return (
     <span className={styles.UserName}>
-      <AiOutlineUser className={styles.UserIcon} />
+      <Icon className={styles.UserIcon} />
       <input
-        type="text"
-        name="userName"
+        type={type}
+        name={name}
         value={input}
         required
-        placeholder="Username"
+        placeholder={placeholder}
         className={styles.UserNameInput}
         onChange={(e) => setInput(e.target.value)}
+        {...props}
       />
     </span>
   );

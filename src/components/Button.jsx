@@ -2,9 +2,14 @@
 import cx from "classnames";
 import styles from "./Button.module.scss";
 
-export const Button = ({ className, children, ...props }) => {
+export const Button = ({ className, kind, children, ...props }) => {
   return (
-    <button className={cx(styles.Button, className)} {...props}>
+    <button
+      className={cx(styles.Button, className, {
+        [styles.Ghost]: kind === "ghost",
+      })}
+      {...props}
+    >
       {children}
     </button>
   );

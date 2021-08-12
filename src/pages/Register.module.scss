@@ -1,1 +1,75 @@
 @import '../../styles/main.scss';
+
+.Background {
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  background-image: linear-gradient(to right bottom, rgba(26, 32, 33, .8), rgba(26, 32, 33, .8)), url('../../public/hero-bg-image.jpg');
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.RegisterSection {
+  height: 100vh;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.RegisterModal {
+  background-color: white;
+  padding: 40px 40px 20px;
+  min-width: 90%;
+  max-width: 500px;
+
+  @include media-breakpoint-up(sm) {
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 500px;
+    padding: 40px;
+  }
+}
+
+.Heading {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  color: #fb564c;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.RegisterForm {
+  display: flex;
+  flex-flow: column;
+}
+
+.Title {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.Buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+}
+
+.SubmitButton {}

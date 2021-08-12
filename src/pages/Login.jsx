@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { AiOutlineUser } from "react-icons/ai";
 import { Button } from "../components";
 import { useAuthContext } from "../context";
 
 import { MainLayout } from "../layout";
-import { InputField, PasswordField } from "../login";
+import { InputField, PasswordField } from "../form";
 
 import styles from "./Login.module.scss";
 
@@ -18,6 +19,10 @@ export const Login = () => {
 
   useEffect(() => {
     router.prefetch("/");
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      router.push("/");
+    }
   }, [router]);
 
   const onSubmit = async (e) => {
@@ -40,7 +45,14 @@ export const Login = () => {
         <div className={styles.LoginModal}>
           <h2 className={styles.Heading}>Login</h2>
           <form onSubmit={onSubmit} className={styles.LoginForm}>
-            <InputField input={userName} setInput={setUserName} />
+            <InputField
+              type="text"
+              name="userName"
+              placeholder="Username"
+              icon={AiOutlineUser}
+              input={userName}
+              setInput={setUserName}
+            />
             <PasswordField password={password} setPassword={setPassword} />
             <Button type="submit" className={styles.SubmitButton}>
               Login

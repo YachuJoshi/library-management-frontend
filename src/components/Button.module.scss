@@ -1,9 +1,9 @@
 @import '../../styles/main.scss';
 
 .Button {
-  background-color: #FB564C;
-  color: #ffffff;
-  border: none;
+  background-color: $color-tertiary;
+  color: $color-white;
+  border: 2px solid transparent;
   padding: 15px 56px;
   border-radius: 100px;
   font-family: inherit;
@@ -12,6 +12,17 @@
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+
+  &.Ghost {
+    background-color: $color-white;
+    color: $color-tertiary;
+    border: 2px solid $color-tertiary;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+  }
 
   &:hover {
     background-color: #fa372b;
