@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { BiPhone, BiCode } from "react-icons/bi";
 import { AiOutlineUser, AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 
@@ -17,9 +18,18 @@ export const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      router.push("/");
+    }
+  }, [router]);
 
   return (
-    <MainLayout title="Library Management | Login Page">
+    <MainLayout title="Library Management | Register Page">
       <div className={styles.Background} />
       <section className={styles.RegisterSection}>
         <div className={styles.RegisterModal}>
