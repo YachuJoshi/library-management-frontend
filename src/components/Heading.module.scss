@@ -1,0 +1,30 @@
+@import '../../styles/main.scss';
+
+.Heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #FB564C;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 24px;
+  margin: 16px 0 20px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 28px;
+    margin: 20px 0 28px;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 34px;
+    margin: 28px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 40px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 44px;
+    margin: 42px 0;
+  }
+}

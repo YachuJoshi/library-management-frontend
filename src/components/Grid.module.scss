@@ -1,0 +1,21 @@
+@import '../../styles/main.scss';
+
+.Grid {
+  display: grid;
+  gap: 40px;
+
+  @include media-breakpoint-up(md) {
+    justify-items: center;
+    grid-template-columns: repeat(2, minmax($card-width-sm, 1fr));
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: 20px;
+    row-gap: 40px;
+    grid-template-columns: repeat(3, minmax($card-width-lg, 1fr));
+  }
+
+  @include media-breakpoint-up(xl) {
+    gap: calc((1140px - (334px * 3)) / 2);
+  }
+}

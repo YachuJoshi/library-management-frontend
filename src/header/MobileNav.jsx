@@ -4,7 +4,7 @@ import cx from "classnames";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { ImBooks } from "react-icons/im";
-import { BiDonateHeart } from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import { FiPhone, FiLogOut } from "react-icons/fi";
 
 import styles from "./MobileNav.module.scss";
@@ -28,17 +28,17 @@ export const MobileNav = ({ isOpen, handleLogout }) => {
           </li>
           <li className={styles.NavMobileItem}>
             <span className={styles.Item}>
-              <ImBooks className={styles.ItemIcon} />
-              <Link href="Books">
-                <a>Books</a>
+              <BiSearchAlt className={styles.ItemIcon} />
+              <Link href="/explore">
+                <a>Explore</a>
               </Link>
             </span>
           </li>
           <li className={styles.NavMobileItem}>
             <span className={styles.Item}>
-              <BiDonateHeart className={styles.ItemIcon} />
-              <Link href="#">
-                <a>About</a>
+              <ImBooks className={styles.ItemIcon} />
+              <Link href="/books">
+                <a>Books</a>
               </Link>
             </span>
           </li>

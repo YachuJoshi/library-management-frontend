@@ -33,6 +33,11 @@ export const AuthProvider = ({ children }) => {
         userDetails,
       });
     }
+    api.interceptors.request.use((config) => {
+      // eslint-disable-next-line no-param-reassign
+      config.headers.Authorization = `Bearer ${accessToken}`;
+      return config;
+    });
   }, []);
 
   const login = async (userName, password) => {

@@ -45,13 +45,13 @@ export const NavBar = () => {
             </Link>
           </li>
           <li className={styles.NavItem}>
-            <Link href="/books">
-              <a>Books</a>
+            <Link href="/explore">
+              <a>Explore</a>
             </Link>
           </li>
           <li className={styles.NavItem}>
-            <Link href="#">
-              <a>About</a>
+            <Link href="/books">
+              <a>Books</a>
             </Link>
           </li>
           <li className={styles.NavItem}>

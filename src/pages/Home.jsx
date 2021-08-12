@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { withAuth } from "../auth";
 import { useAuthContext } from "../context";
 import { MainLayout } from "../layout";
-import { Container } from "../components";
+import { Container, Heading } from "../components";
 import { fetchStudentBookDetail } from "../services";
 import { checkEmpty } from "../utils";
+
+import styles from "./Home.module.scss";
 
 export const Home = withAuth(() => {
   const [books, setBooks] = useState([]);
@@ -26,8 +28,8 @@ export const Home = withAuth(() => {
 
   return (
     <MainLayout title="Library Management | Home Page">
-      <Container>
-        <div>Hello, {user.first_name}</div>
+      <Container className={styles.Container}>
+        <Heading>Hello, {user.first_name}</Heading>
         {books.map((book) => (
           <div key={book.isbn}>
             <span>
