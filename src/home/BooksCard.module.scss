@@ -1,0 +1,69 @@
+@import '../../styles/main.scss';
+
+.BookCard {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  @include card-width-style;
+}
+
+.BookCardFigure {
+  height: 160px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  @include media-breakpoint-up(lg) {
+    height: 140px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    height: 150px;
+  }
+}
+
+.BookCoverImage {
+  object-fit: cover;
+}
+
+.BookDetails {
+  flex: 1;
+  padding: 20px;
+  background-color: $color-white;
+  border: 1.5px solid #E1E1E1;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top: 0px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.Name {
+  color: $color-tertiary;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+  line-height: 126%;
+  text-align: center;
+}
+
+.Author,
+.Description {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.4px;
+  line-height: 150%;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.Description {
+  font-weight: 500;
+  color: #96979B;
+  text-align: left;
+  margin-bottom: 0;
+}

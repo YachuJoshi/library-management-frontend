@@ -1,0 +1,14 @@
+@import '../../styles/main.scss';
+
+.Grid {
+  justify-content: center;
+  width: 100%;
+}
+
+.BookItem {
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-12px);
+  }
+}

@@ -67,3 +67,19 @@ $grid-breakpoints: (xs: 411px,
     @content;
   }
 }
+
+@mixin card-width-style {
+  width: $card-width-xs;
+
+  @include media-breakpoint-up(sm) {
+    width: $card-width-sm;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: $card-width-lg;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: $card-width-xl;
+  }
+}

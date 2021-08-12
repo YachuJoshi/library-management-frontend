@@ -6,6 +6,7 @@ import { MainLayout } from "../layout";
 import { Container, Heading } from "../components";
 import { fetchStudentBookDetail } from "../services";
 import { checkEmpty } from "../utils";
+import { BooksGrid } from "../home";
 
 import styles from "./Home.module.scss";
 
@@ -29,15 +30,12 @@ export const Home = withAuth(() => {
   return (
     <MainLayout title="Library Management | Home Page">
       <Container className={styles.Container}>
-        <Heading>Hello, {user.first_name}</Heading>
-        {books.map((book) => (
-          <div key={book.isbn}>
-            <span>
-              {book.book_name} By {book.author}
-            </span>
-            <br />
-          </div>
-        ))}
+        <Heading>{`${user.first_name}'s Book Inventory`}</Heading>
+        {books.length ? (
+          <BooksGrid books={books} />
+        ) : (
+          <p>No Books Currently In Your Inventory</p>
+        )}
       </Container>
     </MainLayout>
   );
