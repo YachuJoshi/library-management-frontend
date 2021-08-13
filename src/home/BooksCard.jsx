@@ -10,6 +10,7 @@ export const BooksCard = ({ book }) => {
           src={`https://unsplash.it/360/200?image=${num}`}
           alt="Blog Cover"
           layout="fill"
+          loading="eager"
           objectFit="cover"
           className={styles.BookCardImage}
         />

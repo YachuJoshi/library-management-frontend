@@ -34,12 +34,16 @@ export const AuthProvider = ({ children }) => {
         userDetails,
       });
     }
+  }, []);
+
+  useEffect(() => {
     api.interceptors.request.use((config) => {
+      const accessToken = localStorage.getItem("accessToken");
       // eslint-disable-next-line no-param-reassign
       config.headers.Authorization = `Bearer ${accessToken}`;
       return config;
     });
-  }, []);
+  }, [user]);
 
   const signUp = async (studentInfo) => {
     setLoading(true);
