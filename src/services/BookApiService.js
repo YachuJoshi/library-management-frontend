@@ -11,3 +11,7 @@ export const fetchBookByISBN = (isbn) => {
 export const fetchAvailableBooks = () => {
   return api.get("/books/available");
 };
+
+export const fetchAllUniqueBooks = () => {
+  return api.get("/books/all");
+};

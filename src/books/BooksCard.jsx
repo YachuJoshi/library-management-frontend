@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./BooksCard.module.scss";
 
 export const BooksCard = ({ book }) => {
-  const num = Math.floor(Math.random() * 100 + 1);
+  const num = Math.floor(Math.random() * 50 + 1);
   return (
     <div className={styles.BookCard}>
       <figure className={styles.BookCardFigure}>

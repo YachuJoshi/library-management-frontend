@@ -1,0 +1,33 @@
+@import '../../styles/main.scss';
+
+.SectionTitle {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.4px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 20px;
+    margin-bottom: 28px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.AvailableBooksSection,
+.AllBooksSection {
+  padding-bottom: 32px;
+
+  @include media-breakpoint-up(sm) {
+    padding-bottom: 48px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-bottom: 60px;
+  }
+}

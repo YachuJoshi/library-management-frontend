@@ -6,7 +6,7 @@ import { MainLayout } from "../layout";
 import { Container, Heading } from "../components";
 import { fetchStudentBookDetail } from "../services";
 import { checkEmpty } from "../utils";
-import { BooksGrid } from "../home";
+import { BooksGrid } from "../books";
 
 import styles from "./Home.module.scss";
 
@@ -19,7 +19,6 @@ export const Home = withAuth(() => {
     try {
       if (!checkEmpty(user)) {
         const { data } = await fetchStudentBookDetail(user.student_id);
-        console.table(data);
         setBooks(data);
       }
     } catch (err) {
