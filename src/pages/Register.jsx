@@ -6,6 +6,7 @@ import { AiOutlineUser, AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 
 import { MainLayout } from "../layout";
 import { Button } from "../components";
+import { useAuthContext } from "../context";
 import { InputField, PasswordField } from "../form";
 
 import styles from "./Register.module.scss";
@@ -19,6 +20,7 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { signUp } = useAuthContext();
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
@@ -28,13 +30,37 @@ export const Register = () => {
     }
   }, [router]);
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const [firstName, lastName] = name.split(" ");
+    const studentDetails = {
+      firstName,
+      lastName,
+      address,
+      phoneNumber,
+      rollNumber,
+      email,
+      userName,
+      password,
+      role: 1,
+    };
+    try {
+      const successRegister = await signUp(studentDetails);
+      if (successRegister) {
+        router.push("/login");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <MainLayout title="Library Management | Register Page">
       <div className={styles.Background} />
       <section className={styles.RegisterSection}>
         <div className={styles.RegisterModal}>
           <h2 className={styles.Heading}>Register</h2>
-          <form className={styles.RegisterForm}>
+          <form onSubmit={onSubmit} className={styles.RegisterForm}>
             <div className={styles.PersonalInfo}>
               <h3 className={styles.Title}>Personal Info</h3>
               <InputField

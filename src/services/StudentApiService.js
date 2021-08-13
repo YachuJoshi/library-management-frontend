@@ -11,3 +11,7 @@ export const fetchtStudentById = (id) => {
 export const fetchStudentBookDetail = (id) => {
   return api.get(`/students/${id}/books`);
 };
+
+export const createStudent = (studentInfo) => {
+  return api.post("/students", studentInfo);
+};

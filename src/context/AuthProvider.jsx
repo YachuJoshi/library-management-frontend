@@ -9,6 +9,7 @@ import {
 } from "react";
 import { api } from "../api";
 import { toast } from "../components";
+import { createStudent, loginUser } from "../services";
 
 const AuthContext = createContext();
 export const useAuthContext = () => useContext(AuthContext);
@@ -40,13 +41,24 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
+  const signUp = async (studentInfo) => {
+    setLoading(true);
+    try {
+      await createStudent(studentInfo);
+      notify("success", "Account Created Successfully!");
+      return true;
+    } catch (e) {
+      notify("error", "Invalid Credentials!");
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const login = async (userName, password) => {
     setLoading(true);
     try {
-      const response = await api.post("/auth/login", {
-        username: userName,
-        password,
-      });
+      const response = await loginUser(userName, password);
       const { token, userDetails } = response.data;
       if (typeof window !== "undefined") {
         localStorage.setItem("accessToken", token.accessToken);
@@ -57,13 +69,13 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn: true,
         userDetails,
       });
-      setLoading(false);
       notify("success", "Welcome!");
       return true;
     } catch (e) {
-      setLoading(false);
       notify("error", "Invalid Username / Password");
       return false;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,7 +90,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout, loading }}>
+    <AuthContext.Provider
+      value={{ user, setUser, login, logout, signUp, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
