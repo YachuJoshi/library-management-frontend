@@ -8,7 +8,7 @@ export const BooksCard = ({ book }) => {
       <figure className={styles.BookCardFigure}>
         <Image
           src={`https://unsplash.it/360/200?image=${num}`}
-          alt="Blog Cover"
+          alt="Book Cover"
           layout="fill"
           loading="eager"
           objectFit="cover"
