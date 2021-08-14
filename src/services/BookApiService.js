@@ -4,8 +4,8 @@ export const fetchAllBooks = () => {
   return api.get("/books");
 };
 
-export const fetchBookByISBN = (isbn) => {
-  return api.get(`/books/${isbn}`);
+export const fetchBookByISBN = (isbn, params) => {
+  return api.get(`/books/${isbn}`, { params });
 };
 
 export const fetchAvailableBooks = () => {
