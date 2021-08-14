@@ -123,24 +123,19 @@
   }
 
   .SectionTitle {
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 8px;
-    text-transform: capitalize;
+    text-transform: uppercase;
     margin-bottom: 24px;
-
-    @include media-breakpoint-up(sm) {
-      font-size: 18px;
-    }
+    color: $color-tertiary;
+    font-size: 24px;
 
     @include media-breakpoint-up(md) {
-      font-size: 20px;
+      font-size: 28px;
       margin-bottom: 40px;
-    }
-
-    @include media-breakpoint-up(lg) {
-      font-size: 22px;
     }
   }
 }
