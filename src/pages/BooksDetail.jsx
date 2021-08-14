@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BsFillStarFill } from "react-icons/bs";
 
 import { withAuth } from "../auth";
+import { BooksGrid } from "../books";
 import { MainLayout } from "../layout";
 import { Container, Button, Heading } from "../components";
 
@@ -61,6 +62,12 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
           )}
         </section>
       </Container>
+      <div className={styles.AllBooksSection}>
+        <Container>
+          <h2 className={styles.SectionTitle}>More Books</h2>
+          <BooksGrid books={allBooks} />
+        </Container>
+      </div>
     </MainLayout>
   );
 });
