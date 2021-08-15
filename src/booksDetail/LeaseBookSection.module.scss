@@ -1,0 +1,17 @@
+@import '../../styles/main.scss';
+
+.LeaseBtn {
+  align-self: center;
+}
+
+.Text {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 8px;
+  text-transform: capitalize;
+
+  @include media-breakpoint-up(md) {
+    font-size: 18px;
+  }
+}

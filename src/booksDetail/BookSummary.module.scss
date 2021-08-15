@@ -1,0 +1,60 @@
+@import '../../styles/main.scss';
+
+.BookSummary {
+  margin-top: 20px;
+  padding: 0 20px;
+
+  .Title {
+    color: $color-tertiary;
+    font-weight: 500;
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 18px;
+    }
+  }
+
+  summary {
+    line-height: 140%;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 20px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 17px;
+    }
+  }
+
+  .Rating {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 20px;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 24px;
+    }
+
+    .Title {
+      margin-bottom: 0;
+    }
+
+    .Stars {
+
+      svg {
+        height: 20px;
+        width: 20px;
+        fill: #fdc81e;
+
+        &:last-child {
+          fill: #c8c8c8;
+        }
+      }
+    }
+  }
+}

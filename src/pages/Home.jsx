@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
+
 import { withAuth } from "../auth";
-import { useAuthContext } from "../context";
+import { BooksGrid } from "../books";
+import { checkEmpty } from "../utils";
 import { MainLayout } from "../layout";
+import { useAuthContext } from "../context";
 import { Container, Heading } from "../components";
 import { fetchStudentBookDetail } from "../services";
-import { checkEmpty } from "../utils";
-import { BooksGrid } from "../books";
 
 import styles from "./Home.module.scss";
 
