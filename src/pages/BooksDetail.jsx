@@ -1,19 +1,20 @@
+/* eslint-disable no-undef */
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import { withAuth } from "../auth";
 import { BooksGrid } from "../books";
 import { checkEmpty } from "../utils";
 import { MainLayout } from "../layout";
 import { useAuthContext } from "../context";
+import { toast, Container, Heading } from "../components";
+import { leaseBook, fetchStudentBookDetail, returnBook } from "../services";
 import { BookInfoSection, BookSummary, LeaseBookSection } from "../booksDetail";
-import { fetchStudentBookDetail } from "../services";
-import { Container, Heading } from "../components";
 
 import styles from "./BooksDetail.module.scss";
 
 export const BooksDetail = withAuth(({ book, allBooks }) => {
-  const { book_name: bookName, is_available: isAvailable } = book;
+  const { book_name: bookName, isbn, is_available: isAvailable } = book;
   const { user: loggedInUser } = useAuthContext();
   const { userDetails: student } = loggedInUser;
   const router = useRouter();
@@ -25,11 +26,16 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
       studentBook.isbn === queryBookISBN && studentBook.book_id === bookId
   );
 
+  const notify = useCallback((type, message) => {
+    toast({ type, message });
+  }, []);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     try {
       if (!checkEmpty(student)) {
         const { data } = await fetchStudentBookDetail(student.student_id);
+        console.log(data);
         setStudentBooks(data);
       }
     } catch (err) {
@@ -37,8 +43,26 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
     }
   }, [student]);
 
-  const onLease = async () => {};
-  const onReturn = async () => {};
+  const onLease = async () => {
+    try {
+      await leaseBook(isbn, bookId);
+      notify("success", `${bookName} has been successfully leased!`);
+      setTimeout(() => router.reload(window.location.pathname), 500);
+    } catch (e) {
+      notify("error", "Something Went Wrong!");
+      console.log(e);
+    }
+  };
+  const onReturn = async () => {
+    try {
+      await returnBook(isbn, bookId);
+      notify("success", `${bookName} has been successfully returned!`);
+      setTimeout(() => router.reload(window.location.pathname), 500);
+    } catch (e) {
+      notify("error", "Something Went Wrong!");
+      console.log(e);
+    }
+  };
 
   return (
     <MainLayout title="Library Management | Books Detail">

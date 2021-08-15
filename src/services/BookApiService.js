@@ -15,3 +15,11 @@ export const fetchAvailableBooks = () => {
 export const fetchAllUniqueBooks = () => {
   return api.get("/books/all");
 };
+
+export const leaseBook = (bookISBN, bookId) => {
+  return api.post(`/books/${bookISBN}/lease?bookId=${bookId}`);
+};
+
+export const returnBook = (bookISBN, bookId) => {
+  return api.post(`/books/${bookISBN}/return?bookId=${bookId}`);
+};
