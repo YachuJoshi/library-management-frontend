@@ -72,6 +72,7 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
           <BookInfoSection book={book} />
           <BookSummary />
           <LeaseBookSection
+            student={student}
             onLease={onLease}
             onReturn={onReturn}
             isAvailable={isAvailable}

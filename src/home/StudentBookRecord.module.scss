@@ -1,0 +1,104 @@
+@import '../../styles/main.scss';
+
+.Text {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.2px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 22px;
+  }
+}
+
+.StudentBookRecordsTable {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+  color: #1C2628;
+  display: block;
+  border-collapse: collapse;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  margin: 16px 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 17px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 18px;
+    margin: 24px 0;
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+  thead tr {
+    background-color: $color-tertiary;
+    color: $color-white;
+    font-weight: 600;
+  }
+
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 2px;
+
+    @include media-breakpoint-up(sm) {
+      padding: 10px;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding: 16px;
+    }
+  }
+
+  td {
+    border: 1px solid #ccc;
+  }
+
+  tbody tr td:first-of-type {
+    border-left: none;
+  }
+
+  tbody tr td:last-of-type {
+    border-right: none;
+  }
+
+  tbody tr:last-of-type td {
+    border-bottom: none;
+  }
+
+  tbody tr {
+    &:not(:last-child) {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    &:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+}

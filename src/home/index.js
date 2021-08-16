@@ -1,0 +1,1 @@
+export { StudentBookRecord } from "./StudentBookRecord";

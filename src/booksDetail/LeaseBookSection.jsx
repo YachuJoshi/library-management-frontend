@@ -1,12 +1,17 @@
+import { ROLES } from "../constants";
 import { Button } from "../components";
 import styles from "./LeaseBookSection.module.scss";
 
 export const LeaseBookSection = ({
+  student,
   onLease,
   onReturn,
   isAvailable,
   studentHasBook,
 }) => {
+  if (student.role === ROLES.ADMIN) {
+    return null;
+  }
   if (isAvailable) {
     return (
       <Button onClick={onLease} className={styles.LeaseBtn}>
