@@ -1,7 +1,8 @@
 @import '../../styles/main.scss';
 
 .NavigationBar {
-  background: $navigation-background;
+  @include navigation-background;
+
   color: $color-white;
   padding: 20px;
   position: relative;
@@ -78,7 +79,7 @@
   }
 
   &:hover {
-    background-color: #323bc0;
+    background-color: #ff2a56;
 
     .HoverList {
       visibility: visible;

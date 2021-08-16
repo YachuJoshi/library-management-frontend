@@ -9,7 +9,8 @@
   width: 100%;
   transform: translateX(100%);
   transition: all 0.3s ease-in;
-  background: $mobile-nav-background;
+
+  @include navigation-background;
 
   &.OverlayActive {
     transform: translateX(0);

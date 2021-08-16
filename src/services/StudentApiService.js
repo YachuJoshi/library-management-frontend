@@ -8,6 +8,10 @@ export const fetchtStudentById = (id) => {
   return api.get(`/students/${id}`);
 };
 
+export const fetchAllStudentBooksRecord = () => {
+  return api.get("/students/books");
+};
+
 export const fetchStudentBookDetail = (id) => {
   return api.get(`/students/${id}/books`);
 };

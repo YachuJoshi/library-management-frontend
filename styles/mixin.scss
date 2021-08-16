@@ -83,3 +83,8 @@ $grid-breakpoints: (xs: 411px,
     width: $card-width-xl;
   }
 }
+
+@mixin navigation-background {
+  background-color: #FF9A8B;
+  background-image: linear-gradient(120deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+}
