@@ -4,6 +4,10 @@ export const fetchAllBooks = () => {
   return api.get("/books");
 };
 
+export const createBook = (bookDetails) => {
+  return api.post("/books", bookDetails);
+};
+
 export const fetchBookByISBN = (isbn, params) => {
   return api.get(`/books/${isbn}`, { params });
 };

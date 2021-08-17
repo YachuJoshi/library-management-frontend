@@ -20,17 +20,17 @@ export const Home = withAuth(() => {
   const [books, setBooks] = useState([]);
   const [studentBooksRecord, setStudentBooksRecord] = useState([]);
   const { user: loggedInUser } = useAuthContext();
-  const { userDetails: user } = loggedInUser;
+  const { userDetails: _user } = loggedInUser;
   const headingText =
-    user.role === 1
-      ? `${user.first_name}'s Book Inventory`
-      : `Welcome Back ${user.first_name}`;
+    _user.role === 1
+      ? `${_user.first_name}'s Book Inventory`
+      : `Welcome Back ${_user.first_name}`;
 
   useEffect(async () => {
     try {
-      if (!checkEmpty(user)) {
-        if (user?.role === 1) {
-          const { data } = await fetchStudentBookDetail(user.student_id);
+      if (!checkEmpty(_user)) {
+        if (_user?.role === 1) {
+          const { data } = await fetchStudentBookDetail(_user.student_id);
           setBooks(data);
           return;
         }
@@ -40,7 +40,7 @@ export const Home = withAuth(() => {
     } catch (err) {
       console.log(err);
     }
-  }, [user]);
+  }, [_user]);
 
   return (
     <MainLayout title="Library Management | Home Page">
@@ -49,7 +49,7 @@ export const Home = withAuth(() => {
         {books.length ? (
           <BooksGrid books={books} />
         ) : (
-          user.role === ROLES.STUDENT && (
+          _user.role === ROLES.STUDENT && (
             <div className={styles.SeeMoreBooks}>
               <p className={styles.Text}>
                 No Books Currently In Your Inventory
@@ -60,7 +60,7 @@ export const Home = withAuth(() => {
             </div>
           )
         )}
-        {studentBooksRecord.length && user.role === ROLES.ADMIN ? (
+        {studentBooksRecord.length && _user.role === ROLES.ADMIN ? (
           <StudentBookRecord studentBooksRecord={studentBooksRecord} />
         ) : null}
       </Container>

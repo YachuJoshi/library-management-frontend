@@ -1,0 +1,31 @@
+@import '../../styles/main.scss';
+
+.Error {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.AddBooksSection {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 500px;
+
+  @include media-breakpoint-up(sm) {
+    max-width: 600px;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 600px;
+    padding: 0;
+  }
+}
+
+.Form {
+  width: 100%;
+  align-self: stretch;
+  text-align: center;
+}
