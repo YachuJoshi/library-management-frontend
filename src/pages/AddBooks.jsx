@@ -55,7 +55,12 @@ export const AddBooks = withAuth(() => {
     try {
       await createBook(bookDetails);
       notify("success", "Book Added Successfully!");
-      router.reload(window.location.pathname);
+      setISBN("");
+      setBookName("");
+      setQuantity("");
+      setAuthor("");
+      setPublication("");
+      setGenre("");
     } catch (err) {
       notify("error", "Something Went Wrong!");
       console.log(err);
