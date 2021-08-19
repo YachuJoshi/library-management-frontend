@@ -20,6 +20,10 @@ export const fetchAllUniqueBooks = () => {
   return api.get("/books/all");
 };
 
+export const deleteBook = (bookISBN, bookId) => {
+  return api.delete(`/books/${bookISBN}?bookId=${bookId}`);
+};
+
 export const leaseBook = (bookISBN, bookId) => {
   return api.post(`/books/${bookISBN}/lease?bookId=${bookId}`);
 };

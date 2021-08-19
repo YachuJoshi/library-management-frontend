@@ -4,13 +4,22 @@ import styles from "./LeaseBookSection.module.scss";
 
 export const LeaseBookSection = ({
   student,
+  onUpdate,
+  onDelete,
   onLease,
   onReturn,
   isAvailable,
   studentHasBook,
 }) => {
   if (student.role === ROLES.ADMIN) {
-    return null;
+    return (
+      <div className={styles.ActionButtons}>
+        <Button onClick={onUpdate}>Update Book</Button>
+        <Button kind="ghost" onClick={onDelete}>
+          Delete Book
+        </Button>
+      </div>
+    );
   }
   if (isAvailable) {
     return (

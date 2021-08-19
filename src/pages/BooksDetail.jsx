@@ -4,11 +4,17 @@ import { useState, useEffect, useCallback } from "react";
 
 import { withAuth } from "../auth";
 import { BooksGrid } from "../books";
+import { ROLES } from "../constants";
 import { checkEmpty } from "../utils";
 import { MainLayout } from "../layout";
 import { useAuthContext } from "../context";
 import { toast, Container, Heading } from "../components";
-import { leaseBook, fetchStudentBookDetail, returnBook } from "../services";
+import {
+  deleteBook,
+  leaseBook,
+  returnBook,
+  fetchStudentBookDetail,
+} from "../services";
 import { BookInfoSection, BookSummary, LeaseBookSection } from "../booksDetail";
 
 import styles from "./BooksDetail.module.scss";
@@ -33,7 +39,7 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     try {
-      if (!checkEmpty(student)) {
+      if (!checkEmpty(student) && student.role === ROLES.STUDENT) {
         const { data } = await fetchStudentBookDetail(student.student_id);
         console.log(data);
         setStudentBooks(data);
@@ -42,6 +48,19 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
       console.log(err);
     }
   }, [student]);
+
+  const onUpdate = async () => {};
+
+  const onDelete = async () => {
+    try {
+      await deleteBook(isbn, bookId);
+      notify("success", `${bookName} has been successfully deleted!`);
+      router.push("/books");
+    } catch (e) {
+      notify("error", "Something Went Wrong!");
+      console.log(e);
+    }
+  };
 
   const onLease = async () => {
     try {
@@ -73,6 +92,8 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
           <BookSummary />
           <LeaseBookSection
             student={student}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
             onLease={onLease}
             onReturn={onReturn}
             isAvailable={isAvailable}
