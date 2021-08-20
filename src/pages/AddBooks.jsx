@@ -12,22 +12,24 @@ import { withAuth } from "../auth";
 import { ROLES } from "../constants";
 import { InputField } from "../form";
 import { MainLayout } from "../layout";
+import { createBook, updateBook } from "../services";
+import { parseGenres } from "../utils";
 import { useAuthContext } from "../context";
-import { createBook } from "../services";
 import { toast, Container, Heading, Button } from "../components";
 
 import styles from "./AddBooks.module.scss";
 
-export const AddBooks = withAuth(() => {
+export const AddBooks = withAuth(({ book }) => {
   const router = useRouter();
-  const [ISBN, setISBN] = useState("");
-  const [bookName, setBookName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [author, setAuthor] = useState("");
-  const [publication, setPublication] = useState("");
-  const [genre, setGenre] = useState("");
+  const [ISBN, setISBN] = useState(book?.isbn || "");
+  const [bookName, setBookName] = useState(book?.book_name || "");
+  const [quantity, setQuantity] = useState(book?.quantity || "");
+  const [author, setAuthor] = useState(book?.author_name || "");
+  const [publication, setPublication] = useState(book?.publication || "");
+  const [genre, setGenre] = useState(parseGenres(book?.genres) || "");
   const { user: loggedInUser } = useAuthContext();
   const { userDetails: _user } = loggedInUser;
+  const action = !router?.query ? "ADD" : "EDIT";
 
   if (_user.role !== ROLES.ADMIN) {
     return (
@@ -53,14 +55,15 @@ export const AddBooks = withAuth(() => {
       genres,
     };
     try {
-      await createBook(bookDetails);
-      notify("success", "Book Added Successfully!");
-      setISBN("");
-      setBookName("");
-      setQuantity("");
-      setAuthor("");
-      setPublication("");
-      setGenre("");
+      if (action === "ADD") {
+        await createBook(bookDetails);
+        notify("success", "Book Added Successfully!");
+      }
+      if (action === "EDIT") {
+        await updateBook(bookDetails);
+        notify("success", "Book Updated Successfully!");
+      }
+      router.push("/books");
     } catch (err) {
       notify("error", "Something Went Wrong!");
       console.log(err);
@@ -128,7 +131,7 @@ export const AddBooks = withAuth(() => {
               kind="primary"
               className={styles.SubmitButton}
             >
-              Add Book
+              {action === "ADD" ? "Add Book" : "Edit Book"}
             </Button>
           </form>
         </section>

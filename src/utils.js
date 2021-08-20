@@ -1,13 +1,13 @@
-export const checkEmpty = (object) => {
+export const checkEmpty = (object = {}) => {
   return Object.keys(object).length === 0 && object.constructor === Object;
 };
 
-export const filter = (array) => {
+export const filter = (array = []) => {
   const keys = ["student_name", "isbn", "book_name", "author"];
   return array.filter((key) => keys.includes(key));
 };
 
-export function capitalize(string) {
+export const capitalize = (string = "") => {
   const factor = string.includes("_") ? "_" : " ";
   if (!string.includes(factor))
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -18,4 +18,8 @@ export function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   });
   return capitalizedStringArr.join(" ");
-}
+};
+
+export const parseGenres = (genres = []) => {
+  return genres.toString();
+};

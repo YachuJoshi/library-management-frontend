@@ -17,7 +17,15 @@ export const fetchAvailableBooks = () => {
 };
 
 export const fetchAllUniqueBooks = () => {
-  return api.get("/books/all");
+  return api.get("/books/details");
+};
+
+export const fetchBookDetailByISBN = (isbn) => {
+  return api.get(`/books/details/${isbn}`);
+};
+
+export const updateBook = (bookDetails) => {
+  return api.patch(`/books/${bookDetails.isbn}`, bookDetails);
 };
 
 export const deleteBook = (bookISBN, bookId) => {

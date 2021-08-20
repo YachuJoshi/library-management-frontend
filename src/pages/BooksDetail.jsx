@@ -41,7 +41,6 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
     try {
       if (!checkEmpty(student) && student.role === ROLES.STUDENT) {
         const { data } = await fetchStudentBookDetail(student.student_id);
-        console.log(data);
         setStudentBooks(data);
       }
     } catch (err) {
@@ -49,7 +48,9 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
     }
   }, [student]);
 
-  const onUpdate = async () => {};
+  const onUpdate = async () => {
+    router.push(`/books/add?isbn=${isbn}`);
+  };
 
   const onDelete = async () => {
     try {
