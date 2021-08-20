@@ -29,7 +29,7 @@ export const AddBooks = withAuth(({ book }) => {
   const [genre, setGenre] = useState(parseGenres(book?.genres) || "");
   const { user: loggedInUser } = useAuthContext();
   const { userDetails: _user } = loggedInUser;
-  const action = !router?.query ? "ADD" : "EDIT";
+  const action = !router?.query?.isbn ? "ADD" : "EDIT";
 
   if (_user.role !== ROLES.ADMIN) {
     return (
@@ -58,12 +58,19 @@ export const AddBooks = withAuth(({ book }) => {
       if (action === "ADD") {
         await createBook(bookDetails);
         notify("success", "Book Added Successfully!");
+        setISBN("");
+        setBookName("");
+        setQuantity("");
+        setAuthor("");
+        setPublication("");
+        setGenre("");
+        return;
       }
       if (action === "EDIT") {
         await updateBook(bookDetails);
         notify("success", "Book Updated Successfully!");
+        router.push("/books");
       }
-      router.push("/books");
     } catch (err) {
       notify("error", "Something Went Wrong!");
       console.log(err);
