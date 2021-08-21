@@ -5,7 +5,7 @@ const BooksPage = ({ availableBooks, allBooks }) => {
   return <Books availableBooks={availableBooks} allBooks={allBooks} />;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetchAvailableBooks();
   const allBooksRes = await fetchAllUniqueBooks();
   return {
