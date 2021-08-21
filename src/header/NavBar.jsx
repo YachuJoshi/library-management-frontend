@@ -11,7 +11,8 @@ import styles from "./NavBar.module.scss";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { logout } = useAuthContext();
+  const { user: loggedInUser, logout } = useAuthContext();
+  const { userDetails: _user } = loggedInUser;
   const router = useRouter();
   const icon = !isOpen ? "/icons/menu.svg" : "/icons/close-icon.svg";
 
@@ -40,7 +41,7 @@ export const NavBar = () => {
         </span>
         <ul className={styles.NavListDesktop}>
           <li className={styles.NavItem}>
-            <Link href="/profile">
+            <Link href={`/profile?userId=${_user.user_id}`}>
               <a>Profile</a>
             </Link>
           </li>
