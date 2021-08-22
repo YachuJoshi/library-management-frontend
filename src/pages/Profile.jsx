@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import Image from "next/image";
 import { withAuth } from "../auth";
+import { ROLES } from "../constants";
 import { capitalize } from "../utils";
 import { MainLayout } from "../layout";
 import { useAuthContext } from "../context";
@@ -8,11 +9,15 @@ import { Container, Heading } from "../components";
 
 import styles from "./Profile.module.scss";
 
-export const Profile = withAuth(({ user }) => {
+export const Profile = withAuth(({ user, fee }) => {
   const { user: loggedInUser } = useAuthContext();
   const { userDetails: _user } = loggedInUser;
   const fullName = `${user.first_name} ${user.last_name}`;
-  const role = _user.role === 0 ? "Admin" : "Student";
+  const role = _user.role === ROLES.ADMIN ? "Admin" : "Student";
+  const lateFee = fee.reduce(
+    (acc, { late_due_days: lateDueDays }) => acc + lateDueDays,
+    0
+  );
 
   return (
     <MainLayout title="Library Management | Profile Page">
@@ -41,10 +46,12 @@ export const Profile = withAuth(({ user }) => {
                 </li>
               );
             })}
-            <li key={8} className={styles.UserDetailsItem}>
-              <span className={styles.Key}>Late Fee</span>
-              <span className={styles.Value}>$1.00</span>
-            </li>
+            {_user.role === ROLES.STUDENT && (
+              <li key={8} className={styles.UserDetailsItem}>
+                <span className={styles.Key}>Late Fee</span>
+                <span className={styles.Value}>{`$${lateFee}.00`}</span>
+              </li>
+            )}
           </ul>
         </section>
       </Container>
