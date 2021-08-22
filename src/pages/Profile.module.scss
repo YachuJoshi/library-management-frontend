@@ -1,1 +1,104 @@
 @import '../../styles/main.scss';
+
+.ProfileSection {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  @include media-breakpoint-up(md) {
+    padding: 0;
+    padding-bottom: 40px;
+  }
+}
+
+.UserImage {
+  border-radius: 20px;
+}
+
+.UserSummary {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 12px;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: 20px;
+  }
+
+  .FullName {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-tertiary;
+    text-transform: capitalize;
+    letter-spacing: 0.2px;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 21px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 22px;
+    }
+  }
+
+  .Role {
+    font-weight: 500;
+    margin-top: 6px;
+    font-size: 17px;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 18px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 19px;
+    }
+  }
+}
+
+.UserDetails {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 17px;
+  }
+
+  .UserDetailsItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-top: 12px;
+    }
+  }
+
+  .Key {
+    color: $color-tertiary;
+    font-weight: 500;
+  }
+}
