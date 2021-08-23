@@ -21,5 +21,5 @@ export const capitalize = (string = "") => {
 };
 
 export const parseGenres = (genres = []) => {
-  return genres.toString();
+  return genres.join(", ");
 };

@@ -56,8 +56,8 @@ export const NavBar = () => {
             </Link>
           </li>
           <li className={styles.NavItem}>
-            <Link href="#">
-              <a>Contact</a>
+            <Link href="/books/add">
+              <a>Add</a>
             </Link>
           </li>
           <li className={styles.NavItem}>

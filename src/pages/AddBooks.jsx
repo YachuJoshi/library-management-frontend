@@ -80,7 +80,7 @@ export const AddBooks = withAuth(({ book }) => {
   return (
     <MainLayout title="Library Management | Add Books">
       <Container>
-        <Heading>Add Or Edit Books</Heading>
+        <Heading>{action} Books</Heading>
         <section className={styles.AddBooksSection}>
           <form className={styles.Form} onSubmit={onSubmit}>
             <div>

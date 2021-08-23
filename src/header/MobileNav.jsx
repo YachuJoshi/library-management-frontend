@@ -2,10 +2,10 @@
 import Link from "next/link";
 import cx from "classnames";
 
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineFileAdd, AiOutlineUser } from "react-icons/ai";
 import { ImBooks } from "react-icons/im";
 import { BiSearchAlt } from "react-icons/bi";
-import { FiPhone, FiLogOut } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 
 import styles from "./MobileNav.module.scss";
 
@@ -44,9 +44,9 @@ export const MobileNav = ({ isOpen, handleLogout }) => {
           </li>
           <li className={styles.NavMobileItem}>
             <span className={styles.Item}>
-              <FiPhone className={styles.ItemIcon} />
-              <Link href="#">
-                <a>Contact</a>
+              <AiOutlineFileAdd className={styles.ItemIcon} />
+              <Link href="/books/add">
+                <a>Add</a>
               </Link>
             </span>
           </li>
