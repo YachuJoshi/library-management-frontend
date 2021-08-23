@@ -73,6 +73,7 @@ export const BooksDetail = withAuth(({ book, allBooks }) => {
       console.log(e);
     }
   };
+
   const onReturn = async () => {
     try {
       await returnBook(isbn, bookId);

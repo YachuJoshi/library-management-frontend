@@ -3,7 +3,7 @@ import styles from "./BookInfoSection.module.scss";
 
 export const BookInfoSection = ({ book }) => {
   const num = Math.floor(Math.random() * 50 + 1);
-  const { book_name: bookName, isbn, author, publication } = book;
+  const { book_name: bookName, isbn, author, publication, genres } = book;
 
   return (
     <div className={styles.BookInfo}>
@@ -18,7 +18,8 @@ export const BookInfoSection = ({ book }) => {
       <div className={styles.BookDetails}>
         <p>ISBN: {isbn}</p>
         <p>By: {author}</p>
-        <p>2020, {publication}</p>
+        <p>2021, {publication}</p>
+        <p>{genres.join(", ")}</p>
       </div>
     </div>
   );
